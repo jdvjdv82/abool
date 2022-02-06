@@ -3,8 +3,9 @@
 package abool
 
 import (
-	"encoding/json"
 	"sync/atomic"
+
+	"github.com/segmentio/encoding/json"
 )
 
 // New creates an AtomicBool with default set to false.
