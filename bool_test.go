@@ -1,10 +1,11 @@
 package abool
 
 import (
-	"encoding/json"
 	"sync"
 	"sync/atomic"
 	"testing"
+
+	"github.com/segmentio/encoding/json"
 )
 
 func TestDefaultValue(t *testing.T) {
@@ -165,20 +166,6 @@ func TestUnmarshalJSONErrorNoWrite(t *testing.T) {
 			t.Fatal("Failed json.Unmarshal modified the value of AtomicBool which is not expected")
 		}
 	}
-}
-
-func ExampleAtomicBool() {
-	cond := New() // default to false
-	any := true
-	old := any
-	new := !any
-
-	cond.Set()             // Sets to true
-	cond.IsSet()           // Returns true
-	cond.UnSet()           // Sets to false
-	cond.IsNotSet()        // Returns true
-	cond.SetTo(any)        // Sets to whatever you want
-	cond.SetToIf(new, old) // Sets to `new` only if the Boolean matches the `old`, returns whether succeeded
 }
 
 // Benchmark Read

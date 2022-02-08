@@ -1,8 +1,5 @@
 # ABool :bulb:
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/tevino/abool)](https://goreportcard.com/report/github.com/tevino/abool)
-[![GoDoc](https://godoc.org/github.com/tevino/abool?status.svg)](https://godoc.org/github.com/tevino/abool)
-
 Atomic Boolean package for Go, optimized for performance yet simple to use.
 
 Designed for cleaner code.
@@ -10,7 +7,8 @@ Designed for cleaner code.
 ## Usage
 
 ```go
-import "github.com/tevino/abool/v2"
+package abool
+
 
 cond := abool.New()     // default to false
 
@@ -37,18 +35,22 @@ type Foo struct {
 
 ```
 # Read
-BenchmarkMutexRead-4       	100000000	        21.0 ns/op
-BenchmarkAtomicValueRead-4 	200000000	         6.30 ns/op
-BenchmarkAtomicBoolRead-4  	300000000	         4.21 ns/op  # <--- This package
+BenchmarkMutexRead-48                   656360493                8.691 ns/op           0 B/op          0 allocs/op
+BenchmarkAtomicValueRead-48             1000000000               0.2631 ns/op          0 B/op          0 allocs/op
+BenchmarkAtomicBoolRead-48              1000000000               0.2515 ns/op          0 B/op          0 allocs/op
 
 # Write
-BenchmarkMutexWrite-4      	100000000	        21.6 ns/op
-BenchmarkAtomicValueWrite-4	 30000000	        43.4 ns/op
-BenchmarkAtomicBoolWrite-4 	200000000	         9.87 ns/op  # <--- This package
+BenchmarkMutexWrite-48                  693644023                8.755 ns/op           0 B/op          0 allocs/op
+BenchmarkAtomicValueWrite-48            980383506                5.572 ns/op           0 B/op          0 allocs/op
+BenchmarkAtomicBoolWrite-48             1000000000               4.468 ns/op           0 B/op          0 allocs/op
 
 # CAS
-BenchmarkMutexCAS-4        	 30000000	        44.9 ns/op
-BenchmarkAtomicBoolCAS-4   	100000000	        11.7 ns/op   # <--- This package
+BenchmarkMutexCAS-48                    316539304               18.47 ns/op            0 B/op          0 allocs/op
+BenchmarkAtomicBoolCAS-48               1000000000               4.179 ns/op           0 B/op          0 allocs/op
+
+
+
+
 ```
 
 ## Special thanks to contributors
